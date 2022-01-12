@@ -1,0 +1,97 @@
+﻿Tahapan Install dan Konfigurasi Verus Mining
+
+
+1. Update dan Upgrade Armbian
+
+
+sudo apt update
+sudo apt upgrade
+
+
+2.  Ketik Perintah script dibawah :
+
+
+apt install software-properties-common
+
+
+apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential
+
+
+apt install git
+
+
+git clone --single-branch -b ARM https://github.com/monkins1010/ccminer.git
+
+
+cd ccminer
+
+
+chmod +x build.sh
+
+
+chmod +x configure.sh 
+
+
+chmod +x autogen.sh 
+
+
+./build.sh ---> maaf ini sebelumnya terhapus
+
+
+3. Uji Miner dengan perintah dibawah "Jangan Lupa ubah Wallet Addressnya"
+
+
+./ccminer  -a verus  -o stratum+tcp://na.luckpool.net:3956  -u  RLQqn35BEipdEqnY1kXCGUN9Mm7Twn67aC.gratt2 -p x  -t 4
+./ccminer -a verus 
+
+
+
+4. Jalankan perintah Autorun Miner dengan Ketik perintah-perintah dibawah :
+
+
+nano mn.sh
+
+
+/root/ccminer/ccminer -a verus  -o stratum+tcp://eu.luckpool.net:3956  -u  RLQqn35BEipdEqnY1kXCGUN9Mm7Twn67aC.VPS1  -p x  -t 4 "Jangan Lupa ubah Wallet Addressnya"
+
+/root/xmrig/xmrig-6.16.2/xmrig -a cryptonight-upx/2 -o stratum+tcp://cryptonight_upx.mine.zergpool.com:4457 -u 0xcfac78135cdecff82b86cbf040cf25dff50b73b6 --keepalive  --donate-level 1 -p c=SHIB,mc=UPX,m=solo,ID=STB1
+
+5. Lanjut ke perintah berikut
+
+
+crontab -e
+
+
+@reboot bash /root/ccminer/mn.sh > /root/ccminer/miner.log 2>&1
+
+@reboot bash /root/xmrig/xmrig-6.16.2/mn.sh > /root/xmrig/miner.log 2>&1
+
+
+
+
+6. Memindahkan Boot ke ROM STB
+
+
+sudo ./install-aml.sh
+
+
+
+==========
+vps
+=======
+
+root
+68.183.159.196
+
+
+root
+eGreb@3Q
+
+====
+
+159.223.45.76
+
+root
+bLogspot@1B
+
+=====
